@@ -1,38 +1,40 @@
 package hackerrank;
 
-/**
- * FURNITURE_TYPE("Furniture Name", floating-point cost)
-*/
+import java.util.HashMap;
 
+public interface FurnitureOrderInterface {
 
-public enum Furniture {
-	CHAIR("Chair", 100.0f),
-	TABLE("Table", 250.0f),
-	COUCH("Couch", 500.0f);
+    /**
+     * @param type The type of Furniture being added to the order.
+     * @param count The number of units of Furniture type 'type' to add to the order.
+     */
+    public void addToOrder(final Furniture type, final int count);
 
-	private final String label;
-	private final float cost;
+    /**
+     * @return All the ordered furniture as a mapping of Furniture types to Integer quantities.
+     */
+    public HashMap<Furniture, Integer> getOrderedFurniture();
+
+    /**
+     * @param type The type of Furniture
+     * @return The total number of units of Furniture 'type' in the order.
+     */
+    public int getTypeCount(Furniture type);
+
+    /**
+     *
+     * @param type The type of Furniture being ordered
+     * @return The total cost of just the Furniture units of 'type' in the order.
+     */
+    public float getTypeCost(Furniture type);
+
+    /**
+     * @return The total cost of the order.
+     */
+    public float getTotalOrderCost();
 
 	/**
-	 * @param label The plain text name of the furniture
-	 * @param cost The furniture's cost
+	 * @return The total number of all types of Furniture units in the order.
 	 */
-	Furniture(String label, float cost) {
-		this.label = label;
-		this.cost = cost;
-	}
-
-	/**
-	 * @return The plain text name of the furniture
-	 */
-	public String label() {
-		return null;
-	}
-
-	/**
-	 * @return The furniture's cost
-	 */
-	public float cost() {
-		return -1.0f;
-	}
+    public int getTotalOrderQuantity();
 }
